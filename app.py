@@ -31,13 +31,31 @@ st.markdown(
 }
 
 /* Section titles */
-.section-title {
+.section-header {
     font-size: 1.6rem;
     font-weight: 700;
     color: #212121;
     margin-bottom: 18px;
     border-left: 6px solid #30CFD0;
     padding-left: 12px;
+}
+
+/* Title text */
+.title-text {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 800;
+    color: #330867;
+    margin-bottom: 0px;
+}
+
+/* Subtitle text */
+.subtitle-text {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666666;
+    margin-top: 5px;
+    margin-bottom: 30px;
 }
 
 /* Clean input grid */
@@ -110,11 +128,11 @@ model, feature_names = load_resources()
 # MAIN HEADER
 # -------------------------------------------------------
 # Layout: Use a narrow center column to keep the logo tight and centered
-c1, c2, c3 = st.columns([3, 4, 3])
+logo_col1, logo_col2, logo_col3 = st.columns([3, 4, 3])
 
-# with c2:
-# A vibrant, modern 3D-style cyclist illustration
-# st.image("https://cdn-icons-png.flaticon.com/512/2972/2972185.png", width=160)
+with logo_col2:
+    # A vibrant, modern 3D-style cyclist illustration
+    st.image("https://cdn-icons-png.flaticon.com/512/2972/2972185.png", width=160)
 
 # Centered Headings with enhanced typography
 st.markdown('<h1 class="title-text"> RideWise</h1>', unsafe_allow_html=True)
@@ -133,8 +151,8 @@ with st.container():
         '<div class="section-header">📅 Date & Schedule</div>', unsafe_allow_html=True
     )
 
-    c1, c2, c3 = st.columns(3)
-    with c1:
+    col1, col2, col3 = st.columns(3)
+    with col1:
 
         season = st.selectbox("Season", ["Spring", "Summer", "Fall", "Winter"])
         weekday = st.selectbox(
@@ -151,11 +169,11 @@ with st.container():
             ][x],
         )
 
-    with c2:
+    with col2:
         mnth = st.number_input("Month (1-12)", 1, 12, 7)
         holiday = st.selectbox("Is it a Holiday?", ["Yes", "No"], index=1)
 
-    with c3:
+    with col3:
         workingday = st.selectbox("Is it a Working Day?", ["Yes", "No"])
 
 
